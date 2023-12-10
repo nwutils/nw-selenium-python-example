@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  selenium:
+    strategy:
+      matrix:
+        os: [macos-12, ubuntu-22.04, windows-2022]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+      - name: Setup Node
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 21
+          cache: "npm"
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.1
+        with:
+          python-version: "3.11.0"
+          cache: pip
+      - name: Install Node dependencies
+        run: npm ci
+      - name: Install Python dependencies
+        run: python3 -m pipenv install
+      - name: Run Selenium test suite
+        run: python3 -m pytest test.py

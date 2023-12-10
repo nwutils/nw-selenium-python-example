@@ -1,0 +1,9 @@
+{
+    "name": "nw-selenium-python-example",
+    "version": "0.0.0",
+    "main": "index.html",
+    "private": true,
+    "devDependencies": {
+        "nw": "^0.82.0"
+    }
+}

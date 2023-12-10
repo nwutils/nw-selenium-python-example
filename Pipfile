@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+selenium = "4.16.0"
+pytest = "7.4.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
